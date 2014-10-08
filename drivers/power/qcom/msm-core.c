@@ -738,7 +738,7 @@ static int system_suspend_handler(struct notifier_block *nb,
 {
 	int cpu;
 
-
+	mutex_lock(&kthread_update_mutex);
 	switch (val) {
 	case PM_POST_HIBERNATION:
 	case PM_POST_SUSPEND:
@@ -749,6 +749,7 @@ static int system_suspend_handler(struct notifier_block *nb,
 		 * stats
 		 */
 		in_suspend = 0;
+
 		/* Restart the kthread to start sampling */
 		sampling_task = kthread_run(do_sampling, NULL,
 					"msm-core:sampling");
@@ -756,6 +757,7 @@ static int system_suspend_handler(struct notifier_block *nb,
 			pr_err("Failed to create do_sampling err: %ld\n",
 				PTR_ERR(sampling_task));
 		}
+
 		complete(&sampling_completion);
 		break;
 	case PM_HIBERNATION_PREPARE:
@@ -765,14 +767,9 @@ static int system_suspend_handler(struct notifier_block *nb,
 		 * after system resume
 		 */
 		in_suspend = 1;
+
 		cancel_delayed_work(&sampling_work);
 		/*
-		cancel_delayed_work(&sampling_work);
-		/*
-		 * Stop the kthread to prevent race condition between threshold
-		 * resets and cancellation
-		 */
-		kthread_stop(sampling_task);
 		/*
 		 * cancel TSENS interrupts as we do not want to wake up from
 		 * suspend to take care of repopulate stats while the system is
@@ -791,8 +788,8 @@ static int system_suspend_handler(struct notifier_block *nb,
 	default:
 		break;
 	}
-
 	mutex_unlock(&kthread_update_mutex);
+
 	return NOTIFY_OK;
 }
 
