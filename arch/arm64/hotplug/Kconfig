@@ -9,4 +9,18 @@ config ASMP
  	depends on SMP
  	default n
  	help
-   	  Automatically hotplugs the multiple cpu cores on and off based on cpu load and suspend state
+
+   	  CPU hotplug driver designed for ARM big.LITTLE systems where both the big and little CPUs are of the same type. On these systems, it preferable to normall use the big cluster, and only activate the little cluster for highly parallel loads. This hotplug implementation always keeps the big cluster online, and only activates the little cluster for heavy parallel loads.
+
+config LAZYPLUG
+	bool "Conservative hotplugging for generic devices"
+	default n
+	help
+	  This enables the conservative hotplugging, lazyplug by arter97 based on intelli_plug. Refer to the comments for more info.
+
+config MAKO_HOTPLUG
+ 	bool "Mako Hotplug"
+ 	default n
+ 	help
+ 	  Mako Hotplug: A custom hotplug by fransico franco
+
