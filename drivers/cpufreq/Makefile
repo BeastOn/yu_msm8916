@@ -13,6 +13,7 @@ obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVE)	+= cpufreq_interactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_DARKNESS) 	+= cpufreq_darkness.o
 obj-$(CONFIG_CPU_FREQ_GOV_ALUCARD) 	+= cpufreq_alucard.o
 obj-$(CONFIG_CPU_FREQ_GOV_COMMON)	+= cpufreq_governor.o
+obj-$(CONFIG_CPU_FREQ_GOV_PMC)		+= cpufreq_pmc.o
 
 obj-$(CONFIG_CPU_BOOST)			+= cpu-boost.o
 
