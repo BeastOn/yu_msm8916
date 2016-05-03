@@ -1,6 +1,6 @@
-#
- # Copyright © 2016, Kartik12 a.k.a The-Demon12
  #
+ # Copyright © 2016, Kartik12 a.k.a The-Demon12
+ # Copyright © 2016, Aayushrd7
  # Custom build script
  #
  # This software is licensed under the terms of the GNU General Public
