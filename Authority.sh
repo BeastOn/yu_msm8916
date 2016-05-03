@@ -1,6 +1,4 @@
-#
- # Copyright © 2014, Varun Chitre "varun.chitre15" <varun.chitre15@gmail.com>
- # Copyright © 2015, Sanyam Jain "Men_in_black007" <sanyam.53jain@gmail.com>
+ #
  # Copyright © 2016, Aayush Jain   "AayushJainRd7"   <aayush835@gmail.com>
  #
  #
@@ -20,6 +18,7 @@
 KERNEL_DIR=$PWD
 KERN_IMG=$KERNEL_DIR/arch/arm64/boot/Image
 DTBTOOL=$KERNEL_DIR/dtbToolCM
+TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/"
 BUILD_START=$(date +"%s")
 blue='\033[0;34m'
 cyan='\033[0;36m'
@@ -27,8 +26,7 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 nocol='\033[0m'
 # Modify the following variable if you want to build
-export LD_LIBRARY_PATH="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/x86_64-linux-gnu/aarch64-linux-android/lib"
-export CROSS_COMPILE="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-"
+export TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-"
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="AayushRd7"
