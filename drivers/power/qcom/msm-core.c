@@ -738,21 +738,17 @@ static int system_suspend_handler(struct notifier_block *nb,
 {
 	int cpu;
 
-<<<<<<< HEAD
-	mutex_lock(&kthread_update_mutex);
-=======
->>>>>>> f6a0dd1... msm-core: Prevent unnecessary wake up from suspend
+
 	switch (val) {
 	case PM_POST_HIBERNATION:
 	case PM_POST_SUSPEND:
 	case PM_POST_RESTORE:
-<<<<<<< HEAD
+
 		/*
 		 * Set completion event to read temperature and repopulate
 		 * stats
 		 */
 		in_suspend = 0;
-=======
 		/* Restart the kthread to start sampling */
 		sampling_task = kthread_run(do_sampling, NULL,
 					"msm-core:sampling");
@@ -760,7 +756,6 @@ static int system_suspend_handler(struct notifier_block *nb,
 			pr_err("Failed to create do_sampling err: %ld\n",
 				PTR_ERR(sampling_task));
 		}
->>>>>>> f6a0dd1... msm-core: Prevent unnecessary wake up from suspend
 		complete(&sampling_completion);
 		break;
 	case PM_HIBERNATION_PREPARE:
@@ -769,11 +764,9 @@ static int system_suspend_handler(struct notifier_block *nb,
 		 * cancel delayed work to be able to restart immediately
 		 * after system resume
 		 */
-<<<<<<< HEAD
 		in_suspend = 1;
 		cancel_delayed_work(&sampling_work);
 		/*
-=======
 		cancel_delayed_work(&sampling_work);
 		/*
 		 * Stop the kthread to prevent race condition between threshold
@@ -781,7 +774,6 @@ static int system_suspend_handler(struct notifier_block *nb,
 		 */
 		kthread_stop(sampling_task);
 		/*
->>>>>>> f6a0dd1... msm-core: Prevent unnecessary wake up from suspend
 		 * cancel TSENS interrupts as we do not want to wake up from
 		 * suspend to take care of repopulate stats while the system is
 		 * in suspend
@@ -799,11 +791,8 @@ static int system_suspend_handler(struct notifier_block *nb,
 	default:
 		break;
 	}
-<<<<<<< HEAD
-	mutex_unlock(&kthread_update_mutex);
 
-=======
->>>>>>> f6a0dd1... msm-core: Prevent unnecessary wake up from suspend
+	mutex_unlock(&kthread_update_mutex);
 	return NOTIFY_OK;
 }
 
