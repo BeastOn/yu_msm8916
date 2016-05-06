@@ -78,12 +78,6 @@ config ALUCARD_HOTPLUG
  	help
  	  Generic Alucard-hotplug cpu hotplug driver for ARM SOCs
 
-config MSM_SLEEPER
- 	bool "CPU hotplug driver"
- 	default y
- 	help
- 	  CPU hotplug driver
-
 config INTELLI_PLUG
  	bool "Hotplug for Razor Reborn"
  	depends on MSM_RUN_QUEUE_STATS
@@ -103,3 +97,5 @@ config CLUSTER_PLUG
  default n
  help
    CPU hotplug driver designed for ARM big.LITTLE systems where both the big and little CPUs are of the same type. On these systems, it preferable to normall use the big cluster, and only activate the little cluster for highly parallel loads. This hotplug implementation always keeps the big cluster online, and only activates the little cluster for heavy parallel loads.
+=======
+>>>>>>> parent of 74ae333... xAdded support for MSM Sleeper
