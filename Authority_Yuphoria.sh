@@ -33,7 +33,7 @@ export KBUILD_BUILD_USER="AayushRd7"
 export KBUILD_BUILD_HOST="AutHoRiTy-PoWeR"
 STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-strip"
 MODULES_DIR=$KERNEL_DIR/drivers/staging/prima
-
+OUT_DIR=/home/aayushrd7/yu_msm8916/Lettuce
 
 compile_kernel ()
 {
@@ -63,15 +63,17 @@ rm -rf $KERNEL_DIR/arch/arm/boot/dt.img
 compile_kernel
 ;;
 esac
+rm -rf $OUT_DIR/AuthorityKernel_Lettuce*.zip
+rm -rf $OUT_DIR/tools/*
+rm -rf $OUT_DIR/system/lib/modules/*
+cp -r $KERNEL_DIR/Authority/tools $OUT_DIR
+cp $KERNEL_DIR/arch/arm64/boot/Image  $OUT_DIR/tools
+cp $KERNEL_DIR/arch/arm64/boot/dt.img  $OUT_DIR/tools
+mv $OUT_DIR/tools/Image $OUT_DIR/tools/zImage
+cd $OUT_DIR
+zip -r AuthorityKernel_UBTC-v3.0-$(date +"%Y-%m-%d"-%H%M).zip *
+cd $KERNEL_DIR
 
-cp arch/arm64/boot/dt.img ~/home/aayushrd7/yu_msm8916/A_lettuce/tools
-cp arch/arm64/boot/Image ~/home/aayushrd7/yu_msm8916/A_lettuce/tools
-cd ~/home/aayushrd7/yu_msm8916/Lettuce
-zip -r Authority_UBTC_lettuce-r1.zip *
-mv *.zip ~/home/aayushrd7/yu_msm8916/Lettuce
-cd ~/home/aayushrd7/yu_msm8916/Lettuce
-rm -f dt.img
-rm -f Image
 }
 
 authority
