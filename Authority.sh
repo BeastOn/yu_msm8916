@@ -18,7 +18,7 @@
 KERNEL_DIR=$PWD
 KERN_IMG=$KERNEL_DIR/arch/arm64/boot/Image
 DTBTOOL=$KERNEL_DIR/dtbToolCM
-TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-4.9-/bin/"
+TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/"
 BUILD_START=$(date +"%s")
 blue='\033[0;34m'
 cyan='\033[0;36m'
@@ -26,12 +26,12 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 nocol='\033[0m'
 # Modify the following variable if you want to build
-export TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-4.9-/bin/aarch64-linux-android-"
+export TOOLCHAIN_DIR="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-"
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="AayushRd7"
 export KBUILD_BUILD_HOST="AutHoRiTy-PoWeR"
-STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-4.9-/bin/aarch64-linux-android-strip"
+STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-strip"
 MODULES_DIR=/home/aayushrd7/yu_msm8916/common
 OUT_DIR=/home/aayushrd7/yu_msm8916/Tomato
 
